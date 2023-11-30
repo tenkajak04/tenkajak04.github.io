@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Převod Morseovy abecedy</title>
+  <style>
+    body {
+      margin: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      background: linear-gradient(to bottom right, #ffd700, #8a2be2);
+      overflow: hidden;
+    }
+
+    #bubbles {
+      position: fixed;
+      top: 0;
+      left: 0;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    @keyframes bubbleFall {
+      to {
+        transform: translateY(100vh);
+      }
+    }
+
+    .bubble {
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background-color: #fff; /* Bílá barva bubliny */
+      border-radius: 50%;
+      animation: bubbleFall linear infinite;
+      animation-duration: 2s; /* Různé rychlosti - nastavit podle potřeby */
+    }
+
+    #container {
+      text-align: center;
+      padding: 20px;
+      background-color: rgba(255, 255, 255, 0.8);
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+      position: relative;
+      z-index: 2;
+    }
+
+    h1 {
+      color: #333;
+    }
+
+    input {
+      padding: 10px;
+      margin: 10px 0;
+      width: 100%;
+      box-sizing: border-box;
+    }
+
+    button {
+      padding: 10px 20px;
+      margin: 5px;
+      background-color: #4caf50;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    button:hover {
+      background-color: #45a049;
+    }
+  </style>
+</head>
+<body>
+
+<div id="bubbles"></div>
+
+<div id="container">
+  <h1>Převod Morseovy abecedy</h1>
+  <input type="text" id="inputText" placeholder="Vložte text v Morseově abecedě">
+  <button onclick="addCharacter('.')">Přidat Tečku</button>
+  <button onclick="addCharacter('-')">Přidat Pomlčku</button>
+  <button onclick="removeLastCharacter()">Odebrat Poslední</button>
+  <button onclick="convertToLetter()">Převést</button>
+</div>
+
+<script>
+  // Funkce pro vytváření padajících bublin
+  function createBubble() {
+    const bubble = document.createElement('div');
+    bubble.className = 'bubble';
+    bubble.style.left = Math.random() * window.innerWidth + 'px';
+    document.getElementById('bubbles').appendChild(bubble);
+
+    // Po skončení animace odstraníme bublinu, aby se nekumulovaly
+    bubble.addEventListener('animationend', () => {
+      bubble.remove();
+    });
+  }
+
+  // Přidání nových bublin každých 200 milisekund
+  setInterval(createBubble, 200);
+
+  // Funkce pro přidání znaku do vstupního pole
+  function addCharacter(character) {
+    const inputElement = document.getElementById('inputText');
+    inputElement.value += character;
+  }
+
+  // Funkce pro odebrání posledního znaku z vstupního pole
+  function removeLastCharacter() {
+    const inputElement = document.getElementById('inputText');
+    const currentValue = inputElement.value;
+    inputElement.value = currentValue.slice(0, -1);
+  }
+
+  function convertToLetter() {
+    // Kód pro konverzi Morseovy abecedy na písmeno
+    // ...
+
+    // Alert s výsledkem
+    alert('Simulovaný výsledek: A');
+  }
+</script>
+
+</body>
+</html>
