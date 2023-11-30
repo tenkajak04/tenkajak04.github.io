@@ -74,6 +74,11 @@
     button:hover {
       background-color: #45a049;
     }
+
+    #result {
+      margin-top: 20px;
+      font-size: 1.5em;
+    }
   </style>
 </head>
 <body>
@@ -86,36 +91,8 @@
   <button onclick="addCharacter('.')">Přidat Tečku</button>
   <button onclick="addCharacter('-')">Přidat Pomlčku</button>
   <button onclick="removeLastCharacter()">Odebrat Poslední</button>
-  <br>
-  <!-- Tlačítka pro jednotlivá písmena -->
-  <button onclick="addCharacter('.-')">A</button>
-  <button onclick="addCharacter('-...')">B</button>
-  <button onclick="addCharacter('-.-.')">C</button>
-  <button onclick="addCharacter('-..')">D</button>
-  <button onclick="addCharacter('.')">E</button>
-  <button onclick="addCharacter('..-.')">F</button>
-  <button onclick="addCharacter('--.')">G</button>
-  <button onclick="addCharacter('....')">H</button>
-  <button onclick="addCharacter('..')">I</button>
-  <button onclick="addCharacter('.---')">J</button>
-  <button onclick="addCharacter('-.-')">K</button>
-  <button onclick="addCharacter('.-..')">L</button>
-  <button onclick="addCharacter('--')">M</button>
-  <button onclick="addCharacter('-.')">N</button>
-  <button onclick="addCharacter('---')">O</button>
-  <button onclick="addCharacter('.--.')">P</button>
-  <button onclick="addCharacter('--.-')">Q</button>
-  <button onclick="addCharacter('.-.')">R</button>
-  <button onclick="addCharacter('...')">S</button>
-  <button onclick="addCharacter('-')">T</button>
-  <button onclick="addCharacter('..-')">U</button>
-  <button onclick="addCharacter('...-')">V</button>
-  <button onclick="addCharacter('.--')">W</button>
-  <button onclick="addCharacter('-..-')">X</button>
-  <button onclick="addCharacter('-.--')">Y</button>
-  <button onclick="addCharacter('--..')">Z</button>
-  <br>
   <button onclick="convertToLetter()">Převést</button>
+  <div id="result"></div>
 </div>
 
 <script>
@@ -149,13 +126,31 @@
   }
 
   function convertToLetter() {
-    // Kód pro konverzi Morseovy abecedy na písmeno
-    // ...
+    const inputElement = document.getElementById('inputText');
+    const morseCode = inputElement.value;
+
+    // Simulace převodu Morseovy abecedy na písmeno
+    const simulatedResult = simulateMorseToLetterConversion(morseCode);
+
+    // Zobrazení výsledku
+    const resultElement = document.getElementById('result');
+    resultElement.textContent = `Výsledek: ${simulatedResult}`;
 
     // Alert s výsledkem
-    alert('Simulovaný výsledek: A');
+    alert(`Simulovaný výsledek: ${simulatedResult}`);
+  }
+
+  // Funkce pro simulaci převodu Morseovy abecedy na písmeno
+  function simulateMorseToLetterConversion(morseCode) {
+    // Zde můžete implementovat skutečnou konverzi Morseovy abecedy na písmeno
+    // Například pomocí tabulky převodu
+    // ...
+
+    // Vracíme pouze první písmeno jako simulovaný výsledek
+    return morseCode.split(' ')[0];
   }
 </script>
 
 </body>
 </html>
+
